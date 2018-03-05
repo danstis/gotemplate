@@ -1,0 +1,9 @@
+assembly-versioning-scheme: None
+mode: Mainline
+branches: {}
+ignore:
+  sha: []
+major-version-bump-message: '\[(breaking|major)\]'
+minor-version-bump-message: '\[(feature|minor)\]'
+patch-version-bump-message: '\[(fix|patch|hotfix)\]'
+no-bump-message: '\[(none|skip)\]'
