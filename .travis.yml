@@ -15,6 +15,8 @@ matrix:
 # code in vendor/
 install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+  - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
+  - 7z x GitVersion.zip
 
 # Don't email me the results of the test runs.
 notifications:
@@ -24,6 +26,7 @@ notifications:
 # flunk the build and immediately stop. It's sorta like having
 # set -e enabled in bash.
 before_script:
+  - mono GitVersion/GitVersion.exe
   - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/) # All the .go files, excluding vendor/
   - go get github.com/golang/lint/golint                        # Linter
   - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
