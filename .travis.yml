@@ -17,10 +17,10 @@ matrix:
 # code in vendor/
 install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-  - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
+  # - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
+  - wget https://github.com/GitTools/GitVersion/releases/download/v4.0.0-beta.13/GitVersion_4.0.0-beta0013.zip -O GitVersion.zip
   - unzip GitVersion.zip -d GitVersion
-  - ls -lh
-  - sudo apt-get install mono-complete
+  - sudo apt-get install mono-runtime
 
 # Don't email me the results of the test runs.
 notifications:
