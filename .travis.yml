@@ -3,6 +3,8 @@ language: go
 go:
   - "1.x"
 
+mono: latest
+
 matrix:
   # It's ok if our code fails on unstable development versions of Go.
   allow_failures:
@@ -16,8 +18,8 @@ matrix:
 install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
-  - unzip GitVersion.zip
-  - ls -lh
+    unzip GitVersion.zip
+    ls -lh
 
 # Don't email me the results of the test runs.
 notifications:
