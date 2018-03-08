@@ -15,6 +15,13 @@ matrix:
 # code in vendor/
 install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+  # - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
+  - wget https://github.com/GitTools/GitVersion/releases/download/v4.0.0-beta.13/GitVersion_4.0.0-beta0013.zip -O GitVersion.zip && unzip GitVersion.zip -d GitVersion && rm GitVersion.zip
+  - sudo apt-get update && sudo apt-get install -y mono-complete libcurl3
+  - export MONO_GC_PARAMS=nursery-size=8m
+  - go get github.com/golang/lint/golint                        # Linter
+  - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
+  - dep ensure                                                  # Update the vendor directory using dep
 
 # Don't email me the results of the test runs.
 notifications:
@@ -24,11 +31,9 @@ notifications:
 # flunk the build and immediately stop. It's sorta like having
 # set -e enabled in bash.
 before_script:
+  - VERSION=$(mono GitVersion/GitVersion.exe /showvariable FullSemVer)
+  - echo $VERSION
   - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/) # All the .go files, excluding vendor/
-  - go get github.com/golang/lint/golint                        # Linter
-  - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
-  - go get github.com/fzipp/gocyclo
-  - dep ensure
 
 # script always run to completion (set +e). All of these code checks are must haves
 # in a modern Go project.
@@ -37,5 +42,5 @@ script:
   - go test -v -race ./...                                      # Run all the tests with the race detector enabled
   - go vet ./...                                                # go vet is the official Go static analyzer
   - megacheck ./...                                             # "go vet on steroids" + linter
-  - gocyclo -over 19 $GO_FILES                                  # forbid code with huge functions
   - golint -set_exit_status $(go list ./...)                    # one last linter
+  - go run -ldflags "-X main.Version=$VERSION" $GO_FILES        # Test run the code with the version included, replace with go build in practice
