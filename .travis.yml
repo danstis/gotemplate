@@ -35,7 +35,7 @@ before_script:
   # - docker run -v $(pwd):/repo gittools/gitversion
   # - dotnet GitVersion/GitVersion.dll
   # - VERSION=$(dotnet GitVersion/GitVersion.dll | jq .FullSemVer --raw-output)
-  - VERSION=$(docker run -v $(pwd):/repo gittools/gitversion | jq .FullSemVer --raw-output)
+  - VERSION=$(docker run -v $(pwd):/repo gittools/gitversion /url $(git remote get-url origin) -b $TRAVIS_BRANCH -c $TRAVIS_COMMIT | jq .FullSemVer --raw-output)
   - echo $VERSION
   - GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/) # All the .go files, excluding vendor/
 
