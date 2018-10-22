@@ -13,6 +13,7 @@ matrix:
 
 # Skip the install step. Don't `go get` dependencies.
 install:
+  - printenv
   # - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion-bin-net40-v[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip && unzip GitVersion.zip -d GitVersion && rm GitVersion.zip
   # - sudo apt-get update && sudo apt-get install -y mono-complete libcurl3
   # - export MONO_GC_PARAMS=nursery-size=8m
