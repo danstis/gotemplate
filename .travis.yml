@@ -11,17 +11,14 @@ matrix:
   # tests pass on the stable versions of Go.
   fast_finish: true
 
-# Skip the install step. Don't `go get` dependencies. Only build with the
-# code in vendor/
+# Skip the install step. Don't `go get` dependencies.
 install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-  # - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
-  - wget https://github.com/GitTools/GitVersion/releases/download/v4.0.0-beta.13/GitVersion_4.0.0-beta0013.zip -O GitVersion.zip && unzip GitVersion.zip -d GitVersion && rm GitVersion.zip
+  - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
   - sudo apt-get update && sudo apt-get install -y mono-complete libcurl3
   - export MONO_GC_PARAMS=nursery-size=8m
   - go get github.com/golang/lint/golint                        # Linter
   - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
-  - dep ensure                                                  # Update the vendor directory using dep
 
 # Don't email me the results of the test runs.
 notifications:
