@@ -17,7 +17,7 @@ install:
   - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion_[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
   - sudo apt-get update && sudo apt-get install -y mono-complete libcurl3
   - export MONO_GC_PARAMS=nursery-size=8m
-  - go get github.com/golang/lint/golint                        # Linter
+  - go get golang.org/x/lint/golint                             # Linter
   - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
 
 # Don't email me the results of the test runs.
