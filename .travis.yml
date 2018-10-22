@@ -16,17 +16,8 @@ install:
   # - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion-bin-net40-v[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip && unzip GitVersion.zip -d GitVersion && rm GitVersion.zip
   # - sudo apt-get update && sudo apt-get install -y mono-complete libcurl3
   # - export MONO_GC_PARAMS=nursery-size=8m
-  - script |
-      wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
-      sudo dpkg -i packages-microsoft-prod.deb
-      rm packages-microsoft-prod.deb
-      sudo apt-get install apt-transport-https
-      sudo apt-get update
-      sudo apt-get install -y dotnet-runtime-2.1 jq
-  - script |
-      curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion-bin-coreclr-v[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip
-      unzip GitVersion.zip -d GitVersion
-      rm GitVersion.zip
+  - wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb && sudo apt-get install apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-runtime-2.1 jq
+  - curl -s -L https://github.com/GitTools/GitVersion/releases/latest | egrep -o '/GitTools/GitVersion/releases/download/v[0-9\.]*/GitVersion-bin-coreclr-v[0-9\.]*?\.zip' | wget --base=http://github.com/ -i - -O GitVersion.zip && unzip GitVersion.zip -d GitVersion && rm GitVersion.zip
   - export GO111MODULE=on                                       # Enable module support
   - go get golang.org/x/lint/golint                             # Linter
   - go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
