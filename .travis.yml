@@ -31,7 +31,8 @@ notifications:
 # set -e enabled in bash.
 before_script:
   # - VERSION=$(mono GitVersion/GitVersion.exe /showvariable FullSemVer)
-  - dotnet --info
+  - ls -lh
+  - dotnet GitVersion/GitVersion.dll
   - dotnet GitVersion/GitVersion.dll | jq .FullSemVer --raw-output
   - VERSION=$(dotnet GitVersion/GitVersion.dll | jq .FullSemVer --raw-output)
   - echo $VERSION
