@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - beta
       - "feature/*"
       - "fix/*"
   pull_request:
