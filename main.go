@@ -5,7 +5,7 @@ import (
 )
 
 // Version contains the package version
-var Version = "0.0.0-default"
+var Version = "DEVELOPMENT"
 
 // Main entry point for the app.
 func main() {
