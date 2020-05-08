@@ -9,11 +9,11 @@
             {
                 "assets": [
                     {
-                        "path": "artifacts/example-linux-x86*",
+                        "path": "artifacts/example-linux-x86/example",
                         "label": "example-linux-x86"
                     },
                     {
-                        "path": "artifacts/example-win-x64*",
+                        "path": "artifacts/example-win-x64/example.exe",
                         "label": "example-win-x64"
                     }
                 ]

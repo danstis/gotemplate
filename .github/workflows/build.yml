@@ -43,22 +43,22 @@ jobs:
           GOOS: windows
           GOARCH: amd64
 
-      - name: Build linux
+      - name: Build linux x86
         run: go build -v -ldflags "-X main.Version=${{ steps.gitversion.outputs.semVer }}" -o ${{ github.workspace }}/artifacts/linux-x86/example .
         env:
           GOOS: linux
           GOARCH: 386
 
-      - name: Upload a Build Artifact
+      - name: Upload Windows Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: example-win-x64-${{ steps.gitversion.outputs.semVer }}
+          name: example-win-x64
           path: ${{ github.workspace }}/artifacts/win-x64/example.exe
 
-      - name: Upload a Build Artifact
+      - name: Upload Linux Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: example-linux-x86-${{ steps.gitversion.outputs.semVer }}
+          name: example-linux-x86
           path: ${{ github.workspace }}/artifacts/linux-x86/example
 
   test:
