@@ -7,7 +7,16 @@
         [
             "@semantic-release/github",
             {
-                "assets": [{ "path": "./artifacts", "label": "artifacts" }]
+                "assets": [
+                    {
+                        "path": "artifacts/example-linux-x86*",
+                        "label": "example-linux-x86"
+                    },
+                    {
+                        "path": "artifacts/example-win-x64*",
+                        "label": "example-win-x64"
+                    }
+                ]
             }
         ]
     ]
