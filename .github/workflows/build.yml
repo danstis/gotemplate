@@ -38,13 +38,13 @@ jobs:
 
       - name: Build windows x64
         run: go build -v -ldflags "-X main.Version=${{ steps.gitversion.outputs.semVer }}" -o ${{ github.workspace }}/artifacts/win-x64/example.exe .
-        with:
+        env:
           GOOS: windows
           GOARCH: amd64
 
       - name: Build linux
         run: go build -v -ldflags "-X main.Version=${{ steps.gitversion.outputs.semVer }}" -o ${{ github.workspace }}/artifacts/linux-x86/example .
-        with:
+        env:
           GOOS: linux
           GOARCH: 386
 
