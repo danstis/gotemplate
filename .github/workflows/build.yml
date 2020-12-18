@@ -112,7 +112,7 @@ jobs:
           path: ${{ github.workspace }}/artifacts
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: 12
 
