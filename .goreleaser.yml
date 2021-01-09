@@ -31,6 +31,4 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - "^docs:"
-      - "^test:"
-      - "^chore:"
+      - "^(build|chore|ci|doc|docs|none|perf|refactor|skip|test)(\\(.*?\\))?:\\s?"
