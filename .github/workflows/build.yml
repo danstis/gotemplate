@@ -72,7 +72,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     needs: [build, test, lint]
-    if: contains(github.ref, "master")
+    if: contains(github.ref, 'master')
     steps:
       - name: Check out code
         uses: actions/checkout@v2
