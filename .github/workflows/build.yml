@@ -28,7 +28,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build windows x64
+      - name: Run go build
         run: go build -v .
 
   test:
