@@ -12,6 +12,7 @@ builds:
       - darwin
     ldflags:
       - -s -w -X main.Version={{.Version}}
+    binary: example
 archives:
   - replacements:
       darwin: Darwin
