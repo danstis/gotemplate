@@ -1,5 +1,6 @@
 # gotemplate
 
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/danstis/gotemplate)
 [![Go Report Card](https://goreportcard.com/badge/github.com/danstis/gotemplate?style=flat-square)](https://goreportcard.com/report/github.com/danstis/gotemplate)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/danstis/gotemplate)](https://pkg.go.dev/github.com/danstis/gotemplate)
 [![Release](https://img.shields.io/github/release/danstis/gotemplate.svg?style=flat-square)](https://github.com/danstis/gotemplate/releases/latest)
