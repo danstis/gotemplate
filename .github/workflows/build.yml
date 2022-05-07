@@ -24,7 +24,7 @@ jobs:
         id: go
 
       - name: Check out code
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -42,7 +42,7 @@ jobs:
         id: go
 
       - name: Check out code
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
 
       - name: Test
         run: go test -v -race ./...
@@ -61,12 +61,12 @@ jobs:
         id: go
 
       - name: Check out code
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
 
       - name: Run golangci-lint # https://github.com/marketplace/actions/run-golangci-lint
-        uses: golangci/golangci-lint-action@v3.1.0
+        uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.29
+          version: v1.45
 
   release:
     name: Release
@@ -75,7 +75,7 @@ jobs:
     if: contains(github.ref, 'main')
     steps:
       - name: Check out code
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -88,7 +88,7 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.13
         with:
-          versionSpec: "5.5.x"
+          versionSpec: "5.x"
 
       - name: Version with GitVersion # https://github.com/marketplace/actions/use-actions
         id: gitversion
@@ -96,7 +96,7 @@ jobs:
 
       - name: Bump version and push tag
         id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
+        uses: mathieudutour/github-tag-action@v6
         if: ${{ steps.gitversion.outputs.PreReleaseTagWithDash == '' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -105,13 +105,13 @@ jobs:
           tag_prefix: v
 
       - name: Check out code
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         if: ${{ steps.gitversion.outputs.PreReleaseTagWithDash == '' }}
         with:
           fetch-depth: 0
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2.9.1
+        uses: goreleaser/goreleaser-action@v2
         if: ${{ steps.gitversion.outputs.PreReleaseTagWithDash == '' }}
         with:
           version: latest
