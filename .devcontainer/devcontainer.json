@@ -24,7 +24,8 @@
                 "ms-vscode.makefile-tools",
                 "hbenl.vscode-test-explorer",
                 "Gruntfuggly.todo-tree",
-                "dakara.transformer"
+                "dakara.transformer",
+                "esbenp.prettier-vscode"
             ]
         }
     },
