@@ -1,7 +1,6 @@
 # Make sure to check the documentation at http://goreleaser.com
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod download
 builds:
   - env:
@@ -16,13 +15,7 @@ builds:
       - -s -w -X github.com/danstis/gotemplate/internal/version.Version={{.Version}}
     binary: example
 archives:
-  - replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
-    format_overrides:
+  - format_overrides:
       - goos: windows
         format: zip
 checksum:
