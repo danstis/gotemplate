@@ -22,7 +22,7 @@ jobs:
       FullSemVer: ${{ steps.gitversion.outputs.FullSemVer }}
       PreReleaseTagWithDash: ${{ steps.gitversion.outputs.PreReleaseTagWithDash }}
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install GitVersion
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Go 1.x
         uses: actions/setup-go@v4
         with:
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Go 1.x
         uses: actions/setup-go@v4
         with:
@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Go 1.x
         uses: actions/setup-go@v4
         with:
@@ -95,7 +95,7 @@ jobs:
     if: contains(github.ref, 'main')
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Go 1.x
         uses: actions/setup-go@v4
         with:
