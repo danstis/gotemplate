@@ -1,4 +1,3 @@
-version: 2
 # Make sure to check the documentation at http://goreleaser.com
 before:
   hooks:
@@ -18,12 +17,11 @@ builds:
 archives:
   - format_overrides:
       - goos: windows
-        formats:
-          - zip
+        format: zip
 checksum:
   name_template: "checksums.txt"
 snapshot:
-  version_template: "{{ .Version }}-next"
+  name_template: "{{ .Tag }}-next"
 changelog:
   sort: asc
   filters:
